@@ -3,6 +3,7 @@ const greeting = new Scenes.BaseScene('greeting');
 
 greeting.enter((ctx) => {
     ctx.reply('Здравствуйте, мы предоставляем клининговые услуги', keyboard.main);
+    
 });
 
 greeting.action('services', (ctx) => {
