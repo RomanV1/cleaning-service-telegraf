@@ -1,7 +1,6 @@
 const { Markup } = require('telegraf');
-// const pages = require('./index.js');
 
-keyboard = {
+const keyboard = {
     main: Markup.inlineKeyboard([
         [
             Markup.button.callback('Выбрать услугу', 'services'),
@@ -42,7 +41,6 @@ keyboard = {
             Markup.button.callback('Показать заказы', 'page_0'),
         ]
     ]),
-    // pages: Markup.inlineKeyboard(page_keyboard),
 }
 
 module.exports = keyboard

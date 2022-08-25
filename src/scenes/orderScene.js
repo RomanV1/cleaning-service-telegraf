@@ -1,4 +1,4 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+const { Telegraf, Scenes } = require('telegraf');
 const order = new Scenes.BaseScene('order');
 const mongoose = require("mongoose");
 const mongoDB = 'mongodb://root:password@localhost:27017/?authMechanism=DEFAULT';
@@ -7,7 +7,8 @@ const { Orders } = require('../databases/models.js')
 
 order.enter(async (ctx) => {
     let order = new Orders({
-        id: ctx.session.chat_id,
+        order_id: await Orders.countDocuments() + 1,
+        chat_id: ctx.session.chat_id,
         service: ctx.session.service,
         name: ctx.session.name,
         phone: ctx.session.phone,

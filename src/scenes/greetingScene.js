@@ -1,5 +1,6 @@
 const { Telegraf, Scenes, session, Markup } = require('telegraf');
 const greeting = new Scenes.BaseScene('greeting');
+const keyboard = require('../navigation/keyboard')
 
 greeting.enter((ctx) => {
     ctx.reply('Здравствуйте, мы предоставляем клининговые услуги', keyboard.main);
