@@ -3,7 +3,7 @@ const order = new Scenes.BaseScene('order');
 const mongoose = require("mongoose");
 const mongoDB = 'mongodb://root:password@localhost:27017/?authMechanism=DEFAULT';
 mongoose.connect(mongoDB);
-const { Orders } = require('../databases/models.js')
+const { Orders } = require('../databases/models.js');
 
 order.enter(async (ctx) => {
     let order = new Orders({
@@ -13,22 +13,13 @@ order.enter(async (ctx) => {
         name: ctx.session.name,
         phone: ctx.session.phone,
         address: ctx.session.address,
-        date: new Date(2022, ctx.session.month - 1, ctx.session.date, ctx.session.time),
+        // date: new Date(2022, ctx.session.month - 1, ctx.session.date, ctx.session.time),
+        date: `${ctx.session.time} ${ctx.session.date}`,
         price: ctx.session.price,
         payment_method: ctx.session.paymentMethod
     });
     
-    let checkDate = await Orders.findOne({date: ctx.session.date});
-
-    if (!checkDate) {
-        ctx.replyWithHTML(`<b>Заказ оформлен</b> \n\nИмя: ${ctx.session.name} \nНомер телефона: ${ctx.session.phone} \nАдрес: ${ctx.session.address} \nДата: ${ctx.session.date}/${ctx.session.month} ${ctx.session.time}:00 \n\nСтоимость заказа: <b>${ctx.session.price}</b>`);
-    }
-    else {
-        ctx.reply(`${ctx.session.date} уже занято, выберите другую дату`).then(() => {
-            ctx.scene.enter('greeting');
-        });
-        
-    }
+    ctx.replyWithHTML(`<b>Заказ оформлен</b> \n\nИмя: ${ctx.session.name} \nНомер телефона: ${ctx.session.phone} \nАдрес: ${ctx.session.address} \nДата: ${ctx.session.time} ${ctx.session.date} \n\nСтоимость заказа: <b>${ctx.session.price}</b>`);
 
     await order.save();
 });

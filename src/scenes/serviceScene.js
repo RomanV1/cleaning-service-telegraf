@@ -7,21 +7,23 @@ service.enter((ctx) => {
 });
 
 service.action('main', (ctx) => {
-    return ctx.scene.enter('greeting');
+    ctx.scene.enter('greeting');
 });
 
 service.action('house_4000', (ctx) => {
     ctx.editMessageText(`Стоимость уборки дома: 4000р`, keyboard.apart);
     ctx.session.service = 'Уборка дома'
     ctx.session.price = 4000
-    return ctx.scene.enter('name');
+
+    ctx.scene.enter('name');
 });
 
 service.action('apart_3000', (ctx) => {
     ctx.editMessageText(`Стоимость уборки квартиры: 3000р`, keyboard.apart);
     ctx.session.service = 'Уборка квартиры'
     ctx.session.price = 3000
-    return ctx.scene.enter('name');
+    
+    ctx.scene.enter('name');
 });
 
 module.exports = service;

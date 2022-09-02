@@ -52,6 +52,11 @@ const keyboard = {
             Markup.button.callback('Показать заказы', 'page_0'),
         ]
     ]),
+    home: Markup.inlineKeyboard([
+        [
+            Markup.button.callback('На главную', 'home'),
+        ]
+    ]),
 }
 
 module.exports = keyboard

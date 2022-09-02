@@ -1,18 +1,4 @@
 const { Telegraf, Scenes, session, Markup } = require('telegraf');
-const bot = new Telegraf('5579065634:AAGmWKhmdcYHTP8nmO6Ke6ZkYtIjLhjGdq4');
-
-// bot.command('123', (ctx) => {
-//     ctx.replyWithHTML('Оплатите товар:', Markup.inlineKeyboard([
-//         [
-//             Markup.button.callback('1000руб.', 'pay_1000'),
-//         ]
-//     ]));
-// });
-
-bot.action('pay', (ctx) => {
-    console.log(ctx);
-    return ctx.replyWithInvoice(getInvoice(ctx.from.id, ctx));
-});
 
 const getInvoice = (id, ctx) => {
     const invoice = {
@@ -28,15 +14,20 @@ const getInvoice = (id, ctx) => {
     
     return invoice
 }
+
+const payment = (bot) => {
+    bot.action('pay', (ctx) => {
+        ctx.replyWithInvoice(getInvoice(ctx.from.id, ctx));
+    });
     
-bot.on('pre_checkout_query', (ctx) => {
-    console.log(ctx.update);
-    ctx.answerPreCheckoutQuery(true)
-}) // ответ на предварительный запрос по оплате
+    bot.on('pre_checkout_query', (ctx) => {
+        ctx.answerPreCheckoutQuery(true)
+    }) // ответ на предварительный запрос по оплате
+    
+    bot.on('successful_payment', async (ctx) => { // ответ в случае положительной оплаты
+        ctx.scene.enter('order');
+        await ctx.reply('Заказ оплачен');
+    });
+}
 
-bot.on('successful_payment', async (ctx) => { // ответ в случае положительной оплаты
-    ctx.scene.enter('order');
-    await ctx.reply('Заказ оплачен');
-})
-
-module.exports = bot;
+module.exports = { payment };

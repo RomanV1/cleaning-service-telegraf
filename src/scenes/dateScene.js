@@ -1,19 +1,10 @@
 const { Telegraf, Scenes, session, Markup } = require('telegraf');
-const month = new Scenes.BaseScene('month');
 const date = new Scenes.BaseScene('date');
 const time = new Scenes.BaseScene('time');
-
-month.enter((ctx) => {
-    ctx.reply('Введите месяц: (Только цифру)')
-});
-
-month.on('text', (ctx) => {
-    ctx.session.month = ctx.message.text;
-    ctx.scene.enter('date');
-});
+const keyboard = require('../navigation/keyboard');
 
 date.enter((ctx) => {
-    ctx.reply('Введите число: (Только цифру)')
+    ctx.reply('Введите число и месяц через пробел: (Пример: 12 января)', keyboard.home);
 });
 
 date.on('text', (ctx) => {
@@ -21,8 +12,13 @@ date.on('text', (ctx) => {
     ctx.scene.enter('time');
 });
 
+date.action('home', (ctx) => {
+    ctx.scene.enter('greeting');
+});
+
+
 time.enter((ctx) => {
-    ctx.reply('Введите время: (Только час, например: 10)')
+    ctx.reply('Введите время через двоиточие: (Пример: 12:30)', keyboard.home);
 });
 
 time.on('text', (ctx) => {
@@ -30,4 +26,9 @@ time.on('text', (ctx) => {
     ctx.scene.enter('paymentMethod');
 });
 
-module.exports = { month, date, time }
+time.action('home', (ctx) => {
+    ctx.scene.enter('greeting');
+});
+
+
+module.exports = { date, time }
