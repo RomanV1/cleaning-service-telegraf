@@ -30,6 +30,17 @@ const keyboard = {
             Markup.button.callback('На главную', 'main'),
         ]
     ]),
+    paymentMethod: Markup.inlineKeyboard([
+        [
+            Markup.button.callback('Наличными', 'cash'),
+            Markup.button.callback('Картой онлайн', 'card'),
+        ]
+    ]),
+    payment: Markup.inlineKeyboard([
+        [
+            Markup.button.callback('Оплатить', 'pay'),
+        ]
+    ]),
     approve: Markup.inlineKeyboard([
         [
             Markup.button.callback('✅', 'accept'),

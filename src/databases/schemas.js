@@ -18,7 +18,8 @@ const ordersSchema = new mongoose.Schema({
     phone: String,
     address: String,
     date: String,
-    price: String,
+    price: Number,
+    payment_method: String,
 });
 
 module.exports = { usersSchema, ordersSchema }

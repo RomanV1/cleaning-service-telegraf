@@ -3,7 +3,7 @@ const { Users,  } = require('./src/databases/models');
 const { formatOrders, bot } = require('./src/navigation/pagination');
 const commands = require('./src/navigation/commands');
 
-const payment = require('./src/scenes/paymentScene');
+const payment = require('./src/scenes/payment');
 const greeting = require('./src/scenes/greetingScene');
 const service = require('./src/scenes/serviceScene');
 const name = require('./src/scenes/nameScene');
@@ -12,10 +12,11 @@ const address = require('./src/scenes/addressScene');
 const { month } = require('./src/scenes/dateScene');
 const { date } = require('./src/scenes/dateScene');
 const { time } = require('./src/scenes/dateScene');
+const paymentMethod = require('./src/scenes/paymentMethodScene');
 const approve = require('./src/scenes/approveScene');
 const order = require('./src/scenes/orderScene');
 
-const stage = new Scenes.Stage([greeting, service, name, phone, address, month, date, time, approve, order]);
+const stage = new Scenes.Stage([greeting, service, name, phone, address, month, date, time, paymentMethod, approve, order]);
 
 bot.use(session());
 bot.use(stage.middleware());

@@ -14,7 +14,8 @@ order.enter(async (ctx) => {
         phone: ctx.session.phone,
         address: ctx.session.address,
         date: new Date(2022, ctx.session.month - 1, ctx.session.date, ctx.session.time),
-        price: ctx.session.price
+        price: ctx.session.price,
+        payment_method: ctx.session.paymentMethod
     });
     
     let checkDate = await Orders.findOne({date: ctx.session.date});
@@ -25,7 +26,7 @@ order.enter(async (ctx) => {
     else {
         ctx.reply(`${ctx.session.date} уже занято, выберите другую дату`).then(() => {
             ctx.scene.enter('greeting');
-        })
+        });
         
     }
 

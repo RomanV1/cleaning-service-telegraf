@@ -27,7 +27,7 @@ time.enter((ctx) => {
 
 time.on('text', (ctx) => {
     ctx.session.time = ctx.message.text;
-    ctx.scene.enter('approve');
+    ctx.scene.enter('paymentMethod');
 });
 
 module.exports = { month, date, time }
