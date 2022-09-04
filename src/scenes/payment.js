@@ -1,4 +1,4 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+const { Telegraf, Scenes, session, Stage, Markup } = require('telegraf');
 
 const getInvoice = (id, ctx) => {
     const invoice = {
@@ -12,7 +12,7 @@ const getInvoice = (id, ctx) => {
       payload: '123'
     }
     
-    return invoice
+    return invoice;
 }
 
 const payment = (bot) => {
@@ -21,7 +21,7 @@ const payment = (bot) => {
     });
     
     bot.on('pre_checkout_query', (ctx) => {
-        ctx.answerPreCheckoutQuery(true)
+        ctx.answerPreCheckoutQuery(true);
     }) // ответ на предварительный запрос по оплате
     
     bot.on('successful_payment', async (ctx) => { // ответ в случае положительной оплаты

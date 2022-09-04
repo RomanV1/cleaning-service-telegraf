@@ -35,8 +35,20 @@ const commands = (bot) => {
         }
     });
 
-    bot.command('123', (ctx) => {
-        console.log(ctx);
+    bot.on('message', async (ctx) => {
+        ctx.reply('Неизвестная команда');
+    
+        let user = new Users({
+            id: ctx.message.chat.id,
+            name: ctx.message.chat.first_name,
+            rank: 0
+        });
+    
+        let checkUser = await Users.findOne({id: ctx.message.chat.id});
+    
+        if (!checkUser) { 
+            await user.save() 
+        }
     });
 }
 
