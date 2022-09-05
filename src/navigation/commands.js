@@ -36,7 +36,7 @@ const commands = (bot) => {
     });
 
     bot.on('message', async (ctx) => {
-        ctx.reply('Неизвестная команда');
+        ctx.replyWithHTML('Я вас не понимаю, попробуйте <b>/start</b>');
     
         let user = new Users({
             id: ctx.message.chat.id,

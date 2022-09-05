@@ -16,4 +16,12 @@ paymentMethod.action('card', (ctx) => {
     ctx.scene.enter('approve');
 });
 
+paymentMethod.action('home', (ctx) => {
+    ctx.scene.enter('greeting');
+});
+
+paymentMethod.on('message', (ctx) => {
+    ctx.reply('Я вас не понимаю, выберите способ оплаты:', keyboard.paymentMethod);
+});
+
 module.exports = paymentMethod;

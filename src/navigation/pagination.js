@@ -7,6 +7,7 @@ const formatOrders = async (offset, limit) => {
     let result = '';
     for (key in order_result) {
         let order_id = order_result[key].order_id
+        let service = order_result[key].service
         let name = order_result[key].name
         let phone = order_result[key].phone
         let address = order_result[key].address
@@ -14,7 +15,7 @@ const formatOrders = async (offset, limit) => {
         let paymentMethod = order_result[key].payment_method
         let price = order_result[key].price
 
-        result = `Номер заказа: ${order_id} \nИмя: ${name} \nТелефон: ${phone} \nАдрес: ${address} \nДата: ${date} \nСпособ оплаты: ${paymentMethod} \nСтоимость: ${price}`;
+        result = `Номер заказа: ${order_id} \nУслуга: ${service} \nИмя: ${name} \nТелефон: ${phone} \nАдрес: ${address} \nДата: ${date} \nСпособ оплаты: ${paymentMethod} \nСтоимость: ${price}`;
     }
 
     return result;

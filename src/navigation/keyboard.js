@@ -34,6 +34,9 @@ const keyboard = {
         [
             Markup.button.callback('Наличными', 'cash'),
             Markup.button.callback('Картой онлайн', 'card'),
+        ],
+        [
+            Markup.button.callback('На главную', 'home'),
         ]
     ]),
     payment: Markup.inlineKeyboard([
@@ -45,6 +48,9 @@ const keyboard = {
         [
             Markup.button.callback('✅', 'accept'),
             Markup.button.callback('❌', 'decline'),
+        ],
+        [
+            Markup.button.callback('На главную', 'home'),
         ]
     ]),
     orders: Markup.inlineKeyboard([

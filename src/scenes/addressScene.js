@@ -15,5 +15,9 @@ address.action('home', (ctx) => {
     ctx.scene.enter('greeting');
 });
 
+address.on('message', (ctx) => {
+    ctx.reply('Адрес некорректен, попробуйте еще раз.');
+});
+
 
 module.exports = address;

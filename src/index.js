@@ -15,8 +15,9 @@ const { date, time } = require('./scenes/dateScene');
 const paymentMethod = require('./scenes/paymentMethodScene');
 const approve = require('./scenes/approveScene');
 const order = require('./scenes/orderScene');
+const orderNotify = require('./scenes/orderNotificationScene');
 
-const stage = new Scenes.Stage([greeting, service, name, phone, address, date, time, paymentMethod, approve, order]);
+const stage = new Scenes.Stage([greeting, service, name, phone, address, date, time, paymentMethod, approve, order, orderNotify]);
 
 bot.use(session());
 bot.use(stage.middleware());
