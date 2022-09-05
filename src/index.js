@@ -1,5 +1,6 @@
 const { Telegraf, Scenes, session, Stage, Markup } = require('telegraf');
-const bot = new Telegraf('5579065634:AAGmWKhmdcYHTP8nmO6Ke6ZkYtIjLhjGdq4');
+require('dotenv').config();
+const bot = new Telegraf(process.env.BOT_TOKEN);
 const { Users } = require('./databases/models');
 
 const { formatOrders, action } = require('./navigation/pagination');

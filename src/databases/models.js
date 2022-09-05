@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongoDB = 'mongodb://root:password@localhost:27017/?authMechanism=DEFAULT';
+const mongoDB = `mongodb://root:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}/?authMechanism=DEFAULT`;
 mongoose.connect(mongoDB);
 const db = mongoose.connection;
 const {usersSchema, ordersSchema } = require('./schemas');
