@@ -3,7 +3,7 @@ const paymentMethod = new Scenes.BaseScene('paymentMethod');
 const keyboard = require('../navigation/keyboard');
 
 paymentMethod.enter((ctx) => {
-    ctx.reply('Выберите способ оплаты:', keyboard.paymentMethod);
+    ctx.reply('Выберите способ оплаты:', keyboard.PAYMENT_METHOD);
 });
 
 paymentMethod.action('cash', (ctx) => {
@@ -21,7 +21,7 @@ paymentMethod.action('home', (ctx) => {
 });
 
 paymentMethod.on('message', (ctx) => {
-    ctx.reply('Я вас не понимаю, выберите способ оплаты:', keyboard.paymentMethod);
+    ctx.reply('Я вас не понимаю, выберите способ оплаты:', keyboard.PAYMENT_METHOD);
 });
 
 module.exports = paymentMethod;

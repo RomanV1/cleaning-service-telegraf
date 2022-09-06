@@ -3,15 +3,15 @@ const service = new Scenes.BaseScene('service');
 const keyboard = require('../navigation/keyboard');
 
 service.enter((ctx) => {
-    ctx.editMessageText('Выберите услугу', keyboard.services);
+    ctx.editMessageText('Выберите услугу', keyboard.SERVICES);
 });
 
-service.action('main', (ctx) => {
+service.action('home', (ctx) => {
     ctx.scene.enter('greeting');
 });
 
 service.action('house_4000', (ctx) => {
-    ctx.editMessageText(`Стоимость уборки дома: 4000р`, keyboard.apart);
+    ctx.editMessageText(`Стоимость уборки дома: 4000р`, keyboard.APART);
     ctx.session.service = 'Уборка дома'
     ctx.session.price = 4000
 
@@ -19,7 +19,7 @@ service.action('house_4000', (ctx) => {
 });
 
 service.action('apart_3000', (ctx) => {
-    ctx.editMessageText(`Стоимость уборки квартиры: 3000р`, keyboard.apart);
+    ctx.editMessageText(`Стоимость уборки квартиры: 3000р`, keyboard.APART);
     ctx.session.service = 'Уборка квартиры'
     ctx.session.price = 3000
     

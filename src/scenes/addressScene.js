@@ -3,7 +3,7 @@ const address = new Scenes.BaseScene('address');
 const keyboard = require('../navigation/keyboard');
 
 address.enter((ctx) => {
-    ctx.reply('Введите адрес:', keyboard.home);
+    ctx.reply('Введите адрес:', keyboard.HOME);
 });
 
 address.on('text', (ctx) => {

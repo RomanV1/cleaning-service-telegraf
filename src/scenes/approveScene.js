@@ -9,7 +9,7 @@ approve.enter((ctx) => {
 approve.action('accept', (ctx) => {
     // ctx.scene.enter('order');
     if (ctx.session.paymentMethod == 'Картой онлайн') {
-        ctx.editMessageText(`К оплате: ${ctx.session.price}р.`, keyboard.payment);
+        ctx.editMessageText(`К оплате: ${ctx.session.price}р.`, keyboard.PAYMENT);
     } 
     if (ctx.session.paymentMethod == 'Наличными') {
         ctx.scene.enter('order');

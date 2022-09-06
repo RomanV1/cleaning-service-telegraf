@@ -26,7 +26,7 @@ const action = (bot) => {
         const page_keyboard = [
             [],
             [
-                Markup.button.callback('На главную', 'main'),
+                Markup.button.callback('На главную', 'home'),
             ]
         ]
     
@@ -43,7 +43,7 @@ const action = (bot) => {
         ctx.editMessageText(await formatOrders(page_id, 1), Markup.inlineKeyboard(page_keyboard));
     });
     
-    bot.action('main', (ctx) => {
+    bot.action('home', (ctx) => {
         ctx.scene.enter('greeting');
     })
 }

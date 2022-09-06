@@ -18,7 +18,7 @@ date.action('home', (ctx) => {
 
 
 time.enter((ctx) => {
-    ctx.reply('Введите время через двоиточие: (Пример: 12:30)', keyboard.home);
+    ctx.reply('Введите время через двоиточие: (Пример: 12:30)', keyboard.HOME);
 });
 
 time.on('text', (ctx) => {

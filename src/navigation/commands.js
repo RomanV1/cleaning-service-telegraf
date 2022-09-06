@@ -29,7 +29,7 @@ const commands = (bot) => {
     
         if (validRank) {
             let allOrders = await Orders.find();
-            ctx.reply(`Общее кол-во заказов: ${allOrders.length}`, keyboard.orders);
+            ctx.reply(`Общее кол-во заказов: ${allOrders.length}`, keyboard.ORDERS);
         } else {
             ctx.reply('Недостаточно прав')
         }

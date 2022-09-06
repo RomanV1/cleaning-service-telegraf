@@ -3,7 +3,7 @@ const name = new Scenes.BaseScene('name');
 const keyboard = require('../navigation/keyboard');
 
 name.action('order', (ctx) => {
-    ctx.editMessageText('Введите имя:', keyboard.home);
+    ctx.editMessageText('Введите имя:', keyboard.HOME);
 });
 
 name.on('text', (ctx) => {
@@ -12,7 +12,7 @@ name.on('text', (ctx) => {
 });
 
 name.on('message', (ctx) => {
-    ctx.reply('Некорректное имя, попробуйте снова:', keyboard.home);
+    ctx.reply('Некорректное имя, попробуйте снова:', keyboard.HOME);
 });
 
 name.action('home', (ctx) => {

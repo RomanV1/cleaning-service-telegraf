@@ -1,66 +1,67 @@
 const { Markup } = require('telegraf');
+const { button } = require('./buttons');
 
 const keyboard = {
-    main: Markup.inlineKeyboard([
+    GREETING: Markup.inlineKeyboard([
         [
-            Markup.button.callback('Выбрать услугу', 'services'),
+            button.SERVICES
         ],
         [
-            Markup.button.callback('О нас', 'about')
+            button.ABOUT
         ]
     ]),
-    services: Markup.inlineKeyboard([
+    SERVICES: Markup.inlineKeyboard([
         [
-            Markup.button.callback('Уборка дома', 'house_4000'),
-            Markup.button.callback('Уборка квартиры', 'apart_3000'),
+            button.HOUSE,
+            button.APART
         ],
         [
-            Markup.button.callback('На главную', 'main')
+            button.HOME
         ]
     ]),
-    house: Markup.inlineKeyboard([
+    HOUSE: Markup.inlineKeyboard([
         [
-            Markup.button.callback('Оформить заказ', 'order'),
-            Markup.button.callback('На главную', 'main'),
+            button.ORDER,
+            button.HOME
         ]
     ]),
-    apart: Markup.inlineKeyboard([
+    APART: Markup.inlineKeyboard([
         [
-            Markup.button.callback('Оформить заказ', 'order'),
-            Markup.button.callback('На главную', 'main'),
+            button.HOUSE,
+            button.HOME
         ]
     ]),
-    paymentMethod: Markup.inlineKeyboard([
+    PAYMENT_METHOD: Markup.inlineKeyboard([
         [
-            Markup.button.callback('Наличными', 'cash'),
-            Markup.button.callback('Картой онлайн', 'card'),
+            button.CASH,
+            button.CARD
         ],
         [
-            Markup.button.callback('На главную', 'home'),
+            button.HOME
         ]
     ]),
-    payment: Markup.inlineKeyboard([
+    PAYMENT: Markup.inlineKeyboard([
         [
-            Markup.button.callback('Оплатить', 'pay'),
+            button.PAY
         ]
     ]),
-    approve: Markup.inlineKeyboard([
+    APPROVE: Markup.inlineKeyboard([
         [
-            Markup.button.callback('✅', 'accept'),
-            Markup.button.callback('❌', 'decline'),
+            button.ACCEPT,
+            button.DECLINE
         ],
         [
-            Markup.button.callback('На главную', 'home'),
+            button.HOME
         ]
     ]),
-    orders: Markup.inlineKeyboard([
+    ORDERS: Markup.inlineKeyboard([
         [
-            Markup.button.callback('Показать заказы', 'page_0'),
+            button.ORDERS
         ]
     ]),
-    home: Markup.inlineKeyboard([
+    HOME: Markup.inlineKeyboard([
         [
-            Markup.button.callback('На главную', 'home'),
+            button.HOME
         ]
     ]),
 }

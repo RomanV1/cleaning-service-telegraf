@@ -3,7 +3,7 @@ const phone = new Scenes.BaseScene('phone');
 const keyboard = require('../navigation/keyboard');
 
 phone.enter((ctx) => {
-    ctx.replyWithHTML('Введите номер телефона, начиная с <b>+7</b>:', keyboard.home)
+    ctx.replyWithHTML('Введите номер телефона, начиная с <b>+7</b>:', keyboard.HOME)
 });
 
 phone.phone((ctx) => {
