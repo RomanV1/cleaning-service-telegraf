@@ -1,9 +1,0 @@
-version: "3.9"
-services:
-    mongo: 
-        image: bitnami/mongodb
-        ports: 
-            - 27017:27017
-        environment:
-            - MONGODB_ROOT_PASSWORD=password
-        env_file: .env
