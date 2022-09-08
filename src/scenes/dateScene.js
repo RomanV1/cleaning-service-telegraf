@@ -1,7 +1,7 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const date = new Scenes.BaseScene('date');
 const time = new Scenes.BaseScene('time');
-const keyboard = require('../navigation/keyboard');
 
 date.enter((ctx) => {
     ctx.reply('Введите число и месяц через пробел: (Пример: 12 января)', keyboard.home);
@@ -31,4 +31,4 @@ time.action('home', (ctx) => {
 });
 
 
-module.exports = { date, time }
+export { date, time }

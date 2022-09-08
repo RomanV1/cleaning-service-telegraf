@@ -1,6 +1,6 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const name = new Scenes.BaseScene('name');
-const keyboard = require('../navigation/keyboard');
 
 name.action('order', (ctx) => {
     ctx.editMessageText('Введите имя:', keyboard.HOME);
@@ -19,4 +19,4 @@ name.action('home', (ctx) => {
     ctx.scene.enter('greeting');
 });
 
-module.exports = name;
+export { name };

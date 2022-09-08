@@ -1,5 +1,3 @@
-const { Telegraf, Scenes, session, Stage, Markup } = require('telegraf');
-
 const getInvoice = (id, ctx) => {
     const invoice = {
       chat_id: id, // Уникальный идентификатор целевого чата или имя пользователя целевого канала
@@ -30,4 +28,4 @@ const payment = (bot) => {
     });
 }
 
-module.exports = { payment };
+export { payment };

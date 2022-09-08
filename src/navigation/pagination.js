@@ -1,11 +1,11 @@
-const { Telegraf, Markup, Scenes, session } = require('telegraf');
-const { Orders } = require('../databases/models');
+import { Markup } from 'telegraf';
+import { Orders } from '../databases/models.js';
 
 const formatOrders = async (offset, limit) => {
     let allOrders = await Orders.find();
     let order_result = allOrders.splice(offset, limit);
     let result = '';
-    for (key in order_result) {
+    for (let key in order_result) {
         let order_id = order_result[key].order_id
         let service = order_result[key].service
         let name = order_result[key].name
@@ -34,10 +34,13 @@ const action = (bot) => {
         let page_id = Number(ctx.update.callback_query.data.split('_')[1]);
     
         if (page_id > 0) {
+            page_keyboard[0].push(Markup.button.callback('⏪', `page_0`));
             page_keyboard[0].push(Markup.button.callback('⬅️', `page_${page_id - 1}`));
         }
         if (page_id < allOrders.length - 1) {
             page_keyboard[0].push(Markup.button.callback('➡️', `page_${page_id + 1}`));
+            page_keyboard[0].push(Markup.button.callback('⏩', `page_${allOrders.length - 1}`));
+
         }
     
         ctx.editMessageText(await formatOrders(page_id, 1), Markup.inlineKeyboard(page_keyboard));
@@ -48,4 +51,4 @@ const action = (bot) => {
     })
 }
 
-module.exports = { formatOrders, action };
+export { formatOrders, action };

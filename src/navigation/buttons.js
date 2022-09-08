@@ -1,6 +1,6 @@
-const { Markup } = require('telegraf');
+import { Markup } from 'telegraf';
 
-const button = {
+export const button = {
     HOME: Markup.button.callback('На главную', 'home'),
     SERVICES: Markup.button.callback('Выбрать услугу', 'services'),
     ABOUT: Markup.button.callback('О нас', 'about'),
@@ -12,8 +12,5 @@ const button = {
     PAY: Markup.button.callback('Оплатить', 'pay'),
     ACCEPT: Markup.button.callback('✅', 'accept'),
     DECLINE: Markup.button.callback('❌', 'decline'),
-    ORDERS: Markup.button.callback('Показать заказы', 'page_0'),
-
+    ORDERS: Markup.button.callback('Показать заказы', 'page_0')
 }
-
-module.exports = { button } 

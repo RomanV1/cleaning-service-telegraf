@@ -1,6 +1,6 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const address = new Scenes.BaseScene('address');
-const keyboard = require('../navigation/keyboard');
 
 address.enter((ctx) => {
     ctx.reply('Введите адрес:', keyboard.HOME);
@@ -20,4 +20,4 @@ address.on('message', (ctx) => {
 });
 
 
-module.exports = address;
+export { address }

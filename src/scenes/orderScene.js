@@ -1,9 +1,6 @@
-const { Telegraf, Scenes } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { Orders } from '../databases/models.js';
 const order = new Scenes.BaseScene('order');
-const mongoose = require("mongoose");
-const mongoDB = 'mongodb://root:password@localhost:27017/?authMechanism=DEFAULT';
-mongoose.connect(mongoDB);
-const { Orders } = require('../databases/models.js');
 
 order.enter(async (ctx) => {
     let order = new Orders({
@@ -25,4 +22,4 @@ order.enter(async (ctx) => {
 });
 
 
-module.exports = order;
+export { order };

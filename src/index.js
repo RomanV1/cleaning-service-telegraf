@@ -1,22 +1,23 @@
-const { Telegraf, Scenes, session, Stage, Markup } = require('telegraf');
-require('dotenv').config();
+import dotenv from 'dotenv'
+dotenv.config();
+
+import { Telegraf, Scenes, session } from 'telegraf';
 const bot = new Telegraf(process.env.BOT_TOKEN);
-const { Users } = require('./databases/models');
 
-const { formatOrders, action } = require('./navigation/pagination');
-const { commands } = require('./navigation/commands');
-const { payment } = require('./scenes/payment');
+import { formatOrders, action } from './navigation/pagination.js';
+import { commands } from'./navigation/commands.js';
+import { payment } from './scenes/payment.js';
 
-const greeting = require('./scenes/greetingScene');
-const service = require('./scenes/serviceScene');
-const name = require('./scenes/nameScene');
-const phone = require('./scenes/phoneScene');
-const address = require('./scenes/addressScene');
-const { date, time } = require('./scenes/dateScene');
-const paymentMethod = require('./scenes/paymentMethodScene');
-const approve = require('./scenes/approveScene');
-const order = require('./scenes/orderScene');
-const orderNotify = require('./scenes/orderNotificationScene');
+import { greeting } from './scenes/greetingScene.js';
+import { service } from './scenes/serviceScene.js';
+import { name } from './scenes/nameScene.js';
+import { phone } from './scenes/phoneScene.js';
+import { address } from './scenes/addressScene.js';
+import { date, time } from './scenes/dateScene.js';
+import { paymentMethod } from './scenes/paymentMethodScene.js';
+import { approve } from './scenes/approveScene.js';
+import { order } from './scenes/orderScene.js';
+import { orderNotify } from './scenes/orderNotificationScene.js';
 
 const stage = new Scenes.Stage([greeting, service, name, phone, address, date, time, paymentMethod, approve, order, orderNotify]);
 

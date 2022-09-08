@@ -1,13 +1,12 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const approve = new Scenes.BaseScene('approve');
-const keyboard = require('../navigation/keyboard');
 
 approve.enter((ctx) => {
-    ctx.replyWithHTML(`<b>Проверьте, верно ли оформлен заказ:</b> \n\nИмя: ${ctx.session.name} \nНомер телефона: ${ctx.session.phone} \nАдрес: ${ctx.session.address} \nДата: ${ctx.session.time} ${ctx.session.date} \nСпособ оплаты: ${ctx.session.paymentMethod} \nСтоимость: ${ctx.session.price}`, keyboard.approve);
+    ctx.replyWithHTML(`<b>Проверьте, верно ли оформлен заказ:</b> \n\nИмя: ${ctx.session.name} \nНомер телефона: ${ctx.session.phone} \nАдрес: ${ctx.session.address} \nДата: ${ctx.session.time} ${ctx.session.date} \nСпособ оплаты: ${ctx.session.paymentMethod} \nСтоимость: ${ctx.session.price}`, keyboard.APPROVE);
 });
 
 approve.action('accept', (ctx) => {
-    // ctx.scene.enter('order');
     if (ctx.session.paymentMethod == 'Картой онлайн') {
         ctx.editMessageText(`К оплате: ${ctx.session.price}р.`, keyboard.PAYMENT);
     } 
@@ -26,4 +25,4 @@ approve.action('home', (ctx) => {
 
 
 
-module.exports = approve;
+export { approve };

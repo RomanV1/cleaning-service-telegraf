@@ -1,19 +1,18 @@
-const { Telegraf, Scenes, session, Stage, Markup } = require('telegraf');
-const { Users, Orders } = require('../databases/models');
-const keyboard = require('../navigation/keyboard');
+import { Users, Orders } from '../databases/models.js';
+import { keyboard } from '../navigation/keyboard.js';
 
 const commands = (bot) => {
     bot.command('start', async (ctx) => {
         ctx.scene.enter('greeting');
-        ctx.session.chat_id = ctx.message.chat.id;
+        ctx.session.chat_id = ctx.from.id;
     
         let user = new Users({
-            id: ctx.message.chat.id,
-            name: ctx.message.chat.first_name,
+            id: ctx.from.id,
+            name: ctx.from.first_name,
             rank: 0
         });
     
-        let checkUser = await Users.findOne({id: ctx.message.chat.id});
+        let checkUser = await Users.findOne({id: ctx.from.id});
     
         if (!checkUser) { 
             await user.save();
@@ -25,7 +24,7 @@ const commands = (bot) => {
     });
     
     bot.command('orders', async (ctx) => {
-        let validRank = await Users.findOne({ id: ctx.message.chat.id, rank: 1});
+        let validRank = await Users.findOne({ id: ctx.from.id, rank: 1});
     
         if (validRank) {
             let allOrders = await Orders.find();
@@ -39,12 +38,12 @@ const commands = (bot) => {
         ctx.replyWithHTML('Я вас не понимаю, попробуйте <b>/start</b>');
     
         let user = new Users({
-            id: ctx.message.chat.id,
-            name: ctx.message.chat.first_name,
+            id: ctx.from.id,
+            name: ctx.from.first_name,
             rank: 0
         });
     
-        let checkUser = await Users.findOne({id: ctx.message.chat.id});
+        let checkUser = await Users.findOne({id: ctx.from.id});
     
         if (!checkUser) { 
             await user.save() 
@@ -52,4 +51,4 @@ const commands = (bot) => {
     });
 }
 
-module.exports = { commands }
+export { commands }

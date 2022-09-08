@@ -1,8 +1,4 @@
-const mongoose = require("mongoose");
-const mongoDB = `mongodb://root:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}/?authMechanism=DEFAULT`;
-mongoose.connect(mongoDB);
-const db = mongoose.connection;
-
+import mongoose from "mongoose";
 
 const usersSchema = new mongoose.Schema({
 	id: Number,
@@ -22,4 +18,4 @@ const ordersSchema = new mongoose.Schema({
     payment_method: String,
 });
 
-module.exports = { usersSchema, ordersSchema }
+export { usersSchema, ordersSchema }

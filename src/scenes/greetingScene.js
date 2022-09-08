@@ -1,6 +1,6 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+import { Scenes, Markup } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const greeting = new Scenes.BaseScene('greeting');
-const keyboard = require('../navigation/keyboard');
 
 greeting.enter((ctx) => {
     ctx.reply('Здравствуйте, мы предоставляем клининговые услуги', keyboard.GREETING); 
@@ -18,4 +18,4 @@ greeting.action('about', (ctx) => {
     ]));
 });
 
-module.exports = greeting;
+export { greeting };

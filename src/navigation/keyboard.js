@@ -1,7 +1,7 @@
-const { Markup } = require('telegraf');
-const { button } = require('./buttons');
+import { Markup } from 'telegraf';
+import { button } from './buttons.js';
 
-const keyboard = {
+export const keyboard = {
     GREETING: Markup.inlineKeyboard([
         [
             button.SERVICES
@@ -27,7 +27,7 @@ const keyboard = {
     ]),
     APART: Markup.inlineKeyboard([
         [
-            button.HOUSE,
+            button.ORDER,
             button.HOME
         ]
     ]),
@@ -63,7 +63,5 @@ const keyboard = {
         [
             button.HOME
         ]
-    ]),
+    ])
 }
-
-module.exports = keyboard

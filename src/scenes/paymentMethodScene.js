@@ -1,6 +1,6 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const paymentMethod = new Scenes.BaseScene('paymentMethod');
-const keyboard = require('../navigation/keyboard');
 
 paymentMethod.enter((ctx) => {
     ctx.reply('Выберите способ оплаты:', keyboard.PAYMENT_METHOD);
@@ -24,4 +24,4 @@ paymentMethod.on('message', (ctx) => {
     ctx.reply('Я вас не понимаю, выберите способ оплаты:', keyboard.PAYMENT_METHOD);
 });
 
-module.exports = paymentMethod;
+export { paymentMethod };

@@ -1,6 +1,6 @@
-const { Telegraf, Scenes, session, Markup } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const phone = new Scenes.BaseScene('phone');
-const keyboard = require('../navigation/keyboard');
 
 phone.enter((ctx) => {
     ctx.replyWithHTML('Введите номер телефона, начиная с <b>+7</b>:', keyboard.HOME)
@@ -20,4 +20,4 @@ phone.action('home', (ctx) => {
     ctx.scene.enter('greeting');
 });
 
-module.exports = phone;
+export { phone };

@@ -1,6 +1,6 @@
-const { Scenes } = require('telegraf');
+import { Scenes } from 'telegraf';
+import { keyboard } from '../navigation/keyboard.js';
 const service = new Scenes.BaseScene('service');
-const keyboard = require('../navigation/keyboard');
 
 service.enter((ctx) => {
     ctx.editMessageText('Выберите услугу', keyboard.SERVICES);
@@ -11,7 +11,7 @@ service.action('home', (ctx) => {
 });
 
 service.action('house_4000', (ctx) => {
-    ctx.editMessageText(`Стоимость уборки дома: 4000р`, keyboard.APART);
+    ctx.editMessageText(`Стоимость уборки дома: 4000р`, keyboard.HOUSE);
     ctx.session.service = 'Уборка дома'
     ctx.session.price = 4000
 
@@ -26,4 +26,4 @@ service.action('apart_3000', (ctx) => {
     ctx.scene.enter('name');
 });
 
-module.exports = service;
+export { service };
